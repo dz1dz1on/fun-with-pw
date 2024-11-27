@@ -1,0 +1,2 @@
+yarn run prettier:fix && yarn run lint:fix
+yarn run prettier && yarn run lint
