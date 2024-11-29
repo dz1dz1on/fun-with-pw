@@ -1,3 +1,4 @@
+import { step } from '@decorators/step';
 import { Page } from '@playwright/test';
 import { TIME } from 'utils/time';
 
@@ -7,6 +8,7 @@ export class LandingPage {
 
 	constructor(public page: Page) {}
 
+	@step('Search phrase in the docs')
 	async searchInDocs(phrase: string): Promise<void> {
 		await this.searchBar.click();
 		await this.docSearchInput.click();
