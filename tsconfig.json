@@ -12,7 +12,9 @@
 		"noEmit": true,
 		"allowJs": true,
 		"baseUrl": "./",
-		"paths": {}
+		"paths": {
+			"@decorators/*": ["decorators/*"]
+		}
 	},
 	"include": ["**/*.ts"]
 }
