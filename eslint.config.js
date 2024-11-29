@@ -19,10 +19,10 @@ export default tseslint.config(
 		},
 		rules: {
 			'no-unused-vars': 'off',
-			'no-undef': 'off'
+			'no-undef': 'off',
 		},
 	},
-	{	
+	{
 		files: ['**/*.ts', '*.ts'],
 		plugins: {
 			'@typescript-eslint': tseslint.plugin,
@@ -39,7 +39,7 @@ export default tseslint.config(
 			'@typescript-eslint/member-ordering': 'error',
 			'@typescript-eslint/no-floating-promises': 'error',
 			'@typescript-eslint/no-explicit-any': 'off',
-			'@typescript-eslint/no-explicit-any': 'off'
+			'@typescript-eslint/no-explicit-any': 'off',
 		},
 	},
 	{
