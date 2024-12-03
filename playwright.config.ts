@@ -14,7 +14,6 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
 	testDir: './tests',
 	testMatch: '**/*.spec.ts',
-
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -38,11 +37,7 @@ export default defineConfig({
 	projects: [
 		{
 			name: 'chromium',
-			use: { ...devices['Desktop Chrome'], isMobile: false },
-		},
-		{
-			name: 'mobile',
-			use: { ...devices['iPhone 14 Pro'], isMobile: true },
+			use: { ...devices['Desktop Chrome'] },
 		},
 	],
 

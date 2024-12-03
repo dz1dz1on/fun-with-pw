@@ -13,8 +13,7 @@
 		"allowJs": true,
 		"baseUrl": "./",
 		"paths": {
-			"@decorators/*": ["decorators/*"],
-			"@pages/*": ["pages/*"]
+			"@decorators/*": ["decorators/*"]
 		}
 	},
 	"include": ["**/*.ts"]
