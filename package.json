@@ -18,7 +18,8 @@
 		"typescript-eslint": "^8.16.0"
 	},
 	"scripts": {
-		"test": "yarn playwright test --ui",
+		"test": "yarn playwright test --ui --project=chromium",
+		"test:mobile": "yarn playwright test --ui --project=mobile",
 		"lint": "eslint .",
 		"prettier": "prettier . --check",
 		"lint:fix": "eslint . --fix",
