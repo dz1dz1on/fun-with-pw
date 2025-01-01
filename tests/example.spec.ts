@@ -20,6 +20,6 @@ test.describe('Set of tests', () => {
 	test('check steps', async ({ page, landingPage, isMobile }) => {
 		await landingPage.searchInDocs('Locator');
 
-		await expect(page).not.toHaveTitle(/Locators/);
+		await expect(page).toHaveTitle(/Locators/);
 	});
 });
