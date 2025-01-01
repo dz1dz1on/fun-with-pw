@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-	testDir: './tests',
+	testDir: './api/tests',
 	testMatch: '**/*.spec.ts',
 
 	/* Run tests in files in parallel */
@@ -28,7 +28,7 @@ export default defineConfig({
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		/* Base URL to use in actions like `await page.goto('/')`. */
-		baseURL: 'https://playwright.dev/',
+		baseURL: 'https://automationintesting.online/',
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 		trace: 'retain-on-failure',
@@ -38,18 +38,7 @@ export default defineConfig({
 	projects: [
 		{
 			name: 'chromium',
-			use: { ...devices['Desktop Chrome'], isMobile: false },
-		},
-		{
-			name: 'mobile',
-			use: { ...devices['iPhone 14 Pro'], isMobile: true },
+			use: { ...devices['Desktop Chrome'] },
 		},
 	],
-
-	/* Run your local dev server before starting the tests */
-	// webServer: {
-	//   command: 'npm run start',
-	//   url: 'http://127.0.0.1:3000',
-	//   reuseExistingServer: !process.env.CI,
-	// },
 });
