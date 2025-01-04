@@ -30,7 +30,7 @@ export class RoomApiClient extends ApiClient {
 	}
 
 	async getRoomRaw(id: number): Promise<FetchResponse<Room>> {
-		const response = await this.makeRequest<Room>(`${this.baseEndpoint}${id}}`, {
+		const response = await this.makeRequest<Room>(`${this.baseEndpoint}${id}`, {
 			method: 'GET',
 		});
 		return response;
@@ -78,4 +78,15 @@ export class RoomApiClient extends ApiClient {
 		const response = await this.deleteRoomRaw(id);
 		expect(response).toHaveStatusCode(API_STATUSES.ACCEPTED_202);
 	}
+}
+
+export function createRoomsApiClient(request: APIRequestContext, cookies = '', token = ''): RoomApiClient {
+	const config: Headers = {
+		'X-api-version': '1.0',
+		'content-type': 'application/json;charset=UTF-8',
+		Cookie: cookies,
+		Authorization: token ? `Bearer ${token}` : '',
+	};
+
+	return new RoomApiClient(request, config);
 }
