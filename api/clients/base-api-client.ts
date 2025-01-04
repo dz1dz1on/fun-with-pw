@@ -1,17 +1,17 @@
 import { APIRequestContext } from '@playwright/test';
 import config from '../playwright.config';
 
-type QueryParams = Record<string, string | number | boolean | undefined>;
-type Headers = Record<string, string>;
+export type QueryParams = Record<string, string | number | boolean | undefined>;
+export type Headers = Record<string, string>;
 
-interface FetchOptions<T = unknown> {
+export interface FetchOptions<T = unknown> {
 	method: 'PUT' | 'POST' | 'GET' | 'DELETE';
 	headers?: Headers;
 	data?: T;
 	params?: QueryParams;
 }
 
-interface FetchResponse<T = unknown> {
+export interface FetchResponse<T = unknown> {
 	status: number;
 	statusText: string;
 	data: T;
@@ -22,12 +22,12 @@ export class ApiClient {
 	constructor(
 		protected request: APIRequestContext,
 		protected configHeaders: Headers,
-		protected relativePath: string
+		protected baseEndpoint: string
 	) {}
 
-	protected async makeRequest<T>(options: FetchOptions<T>): Promise<FetchResponse> {
+	protected async makeRequest<T>(endpoint: string, options: FetchOptions<T>): Promise<FetchResponse<T>> {
 		const { method, headers = {}, data } = options;
-		const url = this.buildUrl(options?.params);
+		const url = this.buildUrl(endpoint, options?.params);
 
 		const response = await this.request.fetch(url, {
 			method,
@@ -49,12 +49,12 @@ export class ApiClient {
 		};
 	}
 
-	private buildUrl(queryParams?: QueryParams): string {
+	private buildUrl(endpoint: string, queryParams?: QueryParams): string {
 		const baseURL = config.use?.baseURL;
 		if (!baseURL) throw new Error('baseURL is not defined in the Playwright config');
 
 		// Create the base URL
-		const url = new URL(this.relativePath, baseURL);
+		const url = new URL(endpoint, baseURL);
 
 		// Add query parameters if provided
 		if (queryParams) {
