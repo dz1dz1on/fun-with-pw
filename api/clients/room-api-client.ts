@@ -15,8 +15,8 @@ export type Room = components['schemas']['Room'];
 export type Rooms = components['schemas']['Rooms'];
 
 export class RoomApiClient extends ApiClient {
-	constructor(request: APIRequestContext, config: Headers) {
-		super(request, config, '/room/');
+	constructor(request: APIRequestContext, headers: Headers) {
+		super(request, headers, '/room/');
 	}
 
 	async getRoomsRaw(params?: RoomQueryParams): Promise<FetchResponse<Rooms>> {

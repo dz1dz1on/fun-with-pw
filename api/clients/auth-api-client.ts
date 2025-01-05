@@ -8,8 +8,8 @@ export type Auth = components['schemas']['Auth'];
 export type Token = components['schemas']['Token'];
 
 export class AuthApiClient extends ApiClient {
-	constructor(request: APIRequestContext, config: Headers) {
-		super(request, config, '/auth/');
+	constructor(request: APIRequestContext, headers: Headers) {
+		super(request, headers, '/auth/');
 	}
 
 	async loginRaw(data: Auth): Promise<FetchResponse<Auth>> {

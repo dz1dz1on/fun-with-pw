@@ -1,5 +1,3 @@
-// tests/api/rooms.api.spec.ts
-
 import { expect } from '@playwright/test';
 import { Room } from 'api/clients/room-api-client';
 import { test } from 'api/fixtures/api-fixtures';
